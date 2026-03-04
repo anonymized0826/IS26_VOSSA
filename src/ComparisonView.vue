@@ -26,6 +26,18 @@
                             <div class="figure-container">
                                 <img :src="getAssetUrl('/figures/architecture.png')" alt="VOSSA Model Architecture" class="figure-img" />
                             </div>
+                            <p class="figure-caption">
+                                Training workflow for the <u>TVTSyn backbone</u>.
+                                <b>(a)</b> content encoder trained against HuBERT k-means pseudo-labels, and
+                                <b>(b)</b> decoder conditioned on speaker embedding trained with self-supervision and discriminator objectives.
+                                <b>(c)</b> Overview of the <u>training protocol in VOSSA</u>.
+                                The self-reconstruction path (bottom, purple) uses segments from the same LibriTTS speaker to provide fully supervised training,
+                                while the non-parallel VC path (top, orange) uses VoxCeleb targets to condition conversion.
+                                <b>(d)</b> Speaker embedding extraction from the frozen content encoder.
+                                We collect features from the last CNN layer and every other layer of the MHSA stack,
+                                concatenate them to form <b>H</b> ∈ ℝ<sup><i>T</i> × <i>Ld</i></sup>,
+                                and apply attentive statistics pooling and an MLP to obtain a global speaker embedding.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -220,6 +232,15 @@ const selectedIndex = ref(0)
     height: auto;
     display: block;
     border-radius: 8px;
+}
+
+.figure-caption {
+    font-size: 13.5px;
+    color: #57606a;
+    line-height: 1.7;
+    margin: 16px 0 0 0;
+    padding-top: 14px;
+    border-top: 1px solid #e1e4e8;
 }
 
 /* Demo Header */
